@@ -9,6 +9,10 @@ const classes = withStyles((theme) => ({
     sortContainer: {
         display: 'flex',
         alignItems: 'center'
+    },
+    sortItem: {
+        display: 'flex',
+        alignItems: 'center'
     }
 }))
 

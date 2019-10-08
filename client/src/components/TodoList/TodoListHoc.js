@@ -11,8 +11,8 @@ const mapStateToProps = ({todo: {todoList, isLoading, errorMessage, todoCount = 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getAllTodo: (page, sortField) => {
-        return getAllTodo(dispatch, page, sortField)
+    getAllTodo: (page, sortField, sordDirections) => {
+        return getAllTodo(dispatch, page, sortField, sordDirections)
     },
     changeTodoText: (newList, id, text) => changeTodoText(dispatch, newList, id, text)
 })

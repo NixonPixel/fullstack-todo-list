@@ -6,11 +6,7 @@ import withHoc from './CreateTodoHoc'
 const CreateTodo = ({ classes, createTodo, errorMessage, isCreated}) => {
     const [text, setText] = useState('')
     const [userName, setUserName] = useState('')
-    const [isDisabled, setDisabled] = useState(true)
-
-    const onSubmit = () => {
-        createTodo(userName, text)
-    }
+    const [todoName, setTodoName] = useState('')
 
     const onChange = ({target}) => {
         if(target.name === 'text'){
@@ -18,6 +14,9 @@ const CreateTodo = ({ classes, createTodo, errorMessage, isCreated}) => {
         }
         if(target.name === 'userName'){
             setUserName(target.value)
+        }
+        if(target.name === 'todoName') {
+            setTodoName(target.value)
         }
     }
 
@@ -46,7 +45,19 @@ const CreateTodo = ({ classes, createTodo, errorMessage, isCreated}) => {
                         onChange={onChange}
                     />
                 </div>
-                <Button disabled={text.length < 1 || userName.length < 1} onClick={() => createTodo(userName, text)} style={{marginTop: '10px'}} variant="outlined">Создать</Button>
+                <div style={{ textAlign: 'center' }}>
+                    <TextField
+                        id="todoName"
+                        name="todoName"
+                        label="Название задачи"
+                        style={{ margin: 8 }}
+                        fullWidth
+                        margin="normal"
+                        value={todoName}
+                        onChange={onChange}
+                    />
+                </div>
+                <Button disabled={text.length < 1 || userName.length < 1 || todoName.length < 1} onClick={() => createTodo(userName, text, todoName)} style={{marginTop: '10px'}} variant="outlined">Создать</Button>
             </Paper>
         </React.Fragment>
     )

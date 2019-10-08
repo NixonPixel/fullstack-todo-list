@@ -40,10 +40,10 @@ const registration = async (dispatch, email, password, userName) => {
     }
 }
 
-const getAllTodo = async (dispatch, page, sortField) => {
+const getAllTodo = async (dispatch, page, sortField, sordDirections) => {
     dispatch(getTodoListLoading())
     try {
-        const { status, message } = await todo.getAllTodo(page, sortField)
+        const { status, message } = await todo.getAllTodo(page, sortField, sordDirections)
         if (status === 'error') {
             dispatch(getTodoListFailure(message))
             return
@@ -54,9 +54,9 @@ const getAllTodo = async (dispatch, page, sortField) => {
     }
 }
 
-const createTodo = async (dispatch, userName, text) => {
+const createTodo = async (dispatch, userName, text, todoName) => {
     try {
-        const { status, message } = await todo.createTodo(userName, text)
+        const { status, message } = await todo.createTodo(userName, text, todoName)
         if (status === 'error') {
             dispatch(getTodoListFailure(message))
             return

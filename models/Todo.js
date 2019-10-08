@@ -15,6 +15,9 @@ const Todo = new Schema({
         type: String,
         required: true
     },
+    todoName: {
+        type: String
+    },
     createdAt: {
         type: String,
     }

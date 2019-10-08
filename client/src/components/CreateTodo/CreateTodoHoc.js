@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {createTodo} from '../../actions/actions'
 
 const mapDispatchToProps = (dispatch) => ({
-    createTodo: (userName, text) => createTodo(dispatch, userName, text)
+    createTodo: (userName, text, todoName) => createTodo(dispatch, userName, text, todoName)
 })
 
 const mapStateToProps = ({todo: {errorMessage, isCreated}}) => ({

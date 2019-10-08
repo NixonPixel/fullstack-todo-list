@@ -20,7 +20,9 @@ const classes = withStyles((theme) => ({
         boxShadow: '1px 2px 5px #000;'
     },
     main: {
-        paddingTop: 70
+        paddingTop: 70,
+        maxWidth: 1100,
+        margin: '0 auto'
     },
 
 }))

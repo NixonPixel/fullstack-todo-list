@@ -15,17 +15,6 @@ const getAllTodo = async function (req, res) {
             .limit(Number(count))
 
         const totalTodo = await Todo.find({ status }).count()
-        if (sortField === 'text') {
-            todoList.sort((itemA, itemB) => {
-                if (itemA.text.length > itemB.text.length) {
-                    return - 1
-                }
-                if (itemA.text.length < itemB.text.length) {
-                    return 1
-                }
-                return 0
-            })
-        }
         res.status(200).json({
             status: "ok",
             message: {
@@ -39,14 +28,15 @@ const getAllTodo = async function (req, res) {
 }
 
 const createTodo = async function (req, res) {
-    const { text, userName } = req.body
+    const { text, userName, todoName } = req.body
     const dateNow = new Date()
     const createdAt = pretifyDate(dateNow)
     try {
         const todo = await new Todo({
             userName,
             text,
-            createdAt
+            createdAt,
+            todoName
         }).save()
         res.status(200).json({ message: todo })
     } catch (e) {
