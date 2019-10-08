@@ -5,8 +5,14 @@
   "license": "MIT",
   "scripts": {
     "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
     "server": "nodemon -r esm ./src/index.js",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
+  },
+  "engines": {
+    "node": "12.2.0",
+    "npm": "6.9.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
