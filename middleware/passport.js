@@ -1,7 +1,7 @@
 import {Strategy} from 'passport-jwt'
 import {ExtractJwt} from 'passport-jwt'
 import mongoose from 'mongoose'
-import {jwtKey} from '../../config/config'
+import {jwtKey} from '../config/config'
 const User = mongoose.model('users')
 
 

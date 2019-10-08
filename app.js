@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import path from 'path'
-import { mongoURI } from '../config/config'
+import { mongoURI } from './config/config'
 import authRoutes from './routes/auth'
 import todoRoutes from './routes/todo'
 import bodyParser from 'body-parser'
@@ -31,13 +31,17 @@ app.use(bodyParser.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/todo', todoRoutes)
 
+console.log( path.resolve(
+    __dirname, 'client', 'build', 'index.html'
+))
+
 if(process.env.NODE_ENV === ' production') {
     app.use(express.static('../client/build'))
 
     app.get('*', (req, res) => {
         res.sendFile(
             path.resolve(
-                __dirname, '../', 'client', 'build', 'index.html'
+                __dirname, 'client', 'build', 'index.html'
             )
         )
     })

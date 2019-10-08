@@ -6,7 +6,7 @@
   "scripts": {
     "client": "npm start --prefix client",
     "client-install": "npm install --prefix client",
-    "server": "nodemon -r esm ./src/index.js",
+    "server": "nodemon -r esm ./index.js",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
   },
