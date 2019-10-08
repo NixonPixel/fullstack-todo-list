@@ -1,11 +1,7 @@
-import {mongoURI, jwtKey} from './keys.dev'
-
-if (process.env.NODE_ENV === 'production') {
-    mongoURI = process.env.MONGO_URI
-    jwtKey = process.env.JWT
-}
+let mongoURI = 'mongodb+srv://NixonPixel:TBYWJ6UNfMYwITvN@cluster0-mptez.mongodb.net/test?retryWrites=true'
+let jwtKey = 'dev-jwt'
 
 export {
     mongoURI,
-    jwtKey
+    jwtKey,
 }
