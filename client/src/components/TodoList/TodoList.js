@@ -120,9 +120,9 @@ class TodoList extends Component {
                 {errorMessage && <p>{errorMessage}</p>}
                 {isLoading && <p>Загрузка...</p>}
                 <div className={classes.container}>
-                    {!isLoading || !todoList.legth < 0 ? this.state.todoList.map((todo) => {
+                    {this.state.todoList.map((todo) => {
                         return <TodoItem todoName={todo.todoName} changeTodo={this.changeTodo} id={todo._id} createdAt={todo.createdAt} userName={todo.userName} text={todo.text} key={todo._id} />
-                    }) : <Typography>Заданий пока нет</Typography>}
+                    })} 
                 </div>
                 {todoList && maxSteps > 1 ? <MobileStepper
                     style={{ maxWidth: '450px', margin: '0 auto' }}

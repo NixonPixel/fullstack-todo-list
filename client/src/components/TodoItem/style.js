@@ -8,7 +8,8 @@ const classes = withStyles((theme) => ({
         width: '100%',
         border: '2px solid #999',
         borderRadius: '4px',
-        maxWidth: '33.33%'
+        maxWidth: '33.33%',
+        overflowY: 'auto'
     },
     body: {
         textAlign: 'center'

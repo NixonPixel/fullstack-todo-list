@@ -15,7 +15,6 @@ const login = async (dispatch, email, password) => {
     try {
         const { status, message } = await auth.login(email, password)
         if (status === 'error') {
-            console.log(message)
             dispatch(authFailure(message))
             return
         }
@@ -82,7 +81,8 @@ const exit = (dispatch) => {
 
 const setDoneTodo = async (dispatch, id, page) => {
     try {
-        const { status, message } = await todo.setDone(id)
+        const token = new Cookie("token").get()
+        const { status, message } = await todo.setDone(id, token)
         if (status === 'error') {
             dispatch(getTodoListFailure(message))
             return
@@ -94,9 +94,9 @@ const setDoneTodo = async (dispatch, id, page) => {
 }
 
 const changeTodoText = (dispatch, newList, id, text) => {
-    console.log('change todotext')
     try {
-        todo.changeTodoText(id, text).then(() => dispatch(changeTodoTextSuccess(newList)))
+        const token = new Cookie("token").get()
+        todo.changeTodoText(id, text, token).then(() => dispatch(changeTodoTextSuccess(newList)))
     } catch (e) {
         dispatch(getTodoListFailure(e.message))
     }

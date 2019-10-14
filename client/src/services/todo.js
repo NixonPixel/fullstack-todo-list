@@ -1,14 +1,9 @@
-import Coolie from '../utils/cookie'
-
-const token = new Coolie("token").get()
-
 class Todo {
     getAllTodo = (page = 1, sortField = 'createdAt', sortDirections = "1") => {
-        console.log(sortField, sortDirections)
         return fetch(`/api/todo/?page=${page}&sortField=${sortField}&sortDirections=${sortDirections}`).then(res => res.json())
     }
 
-    setDone = async (id) => {
+    setDone = async (id, token) => {
         const body = {
             status: "done"
         }
@@ -23,8 +18,6 @@ class Todo {
     }
 
     createTodo = (userName, text, todoName) => {
-        console.log(todoName)
-        console.log('sdasd')
         return fetch('/api/todo/', {
             method: 'POST',
             headers: {
@@ -34,7 +27,7 @@ class Todo {
         }).then(res => res.json())
     }
 
-    changeTodoText = (id, text) => {
+    changeTodoText = (id, text, token) => {
         const body = {
             text
         }
