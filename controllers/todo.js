@@ -30,7 +30,7 @@ const getAllTodo = async function (req, res) {
 
 const createTodo = async function (req, res) {
     const { text, userName, todoName } = req.body
-    const createdAt = moment().format("MMM Do YY");   
+    const createdAt = moment().locale('ru').format("MMM Do YYYY");
     try {
         const todo = await new Todo({
             userName,
