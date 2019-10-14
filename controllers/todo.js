@@ -1,5 +1,6 @@
 import Todo from '../models/Todo'
 import errorHandler from '../utils/errorHandler'
+import moment from 'moment'
 
 const pretifyDate = (date) => {
     return `${String(date.getDate()).padStart(2, 0)}.${String(date.getMonth()).padStart(2, 0)} ${String(date.getHours()).padStart(2, 0)}:${String(date.getMinutes()).padStart(2, 0)}`
@@ -29,8 +30,7 @@ const getAllTodo = async function (req, res) {
 
 const createTodo = async function (req, res) {
     const { text, userName, todoName } = req.body
-    const dateNow = new Date()
-    const createdAt = pretifyDate(dateNow)
+    const createdAt = moment().format("MMM Do YY");   
     try {
         const todo = await new Todo({
             userName,
